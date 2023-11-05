@@ -1,0 +1,19 @@
+name: car_api
+description: The interface and models for an API for providing access to Car
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  errors:
+    path: ../errors
+  equatable: ^2.0.5
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  build_runner: ^2.4.6
+  fpdart: ^1.1.0
+  json_serializable: ^6.7.1
+  mocktail: ^1.0.1
+  test: ^1.24.9
