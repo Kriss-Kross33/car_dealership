@@ -38,3 +38,33 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-ExtraBold.ttf
+          weight: 900
+        - asset: assets/fonts/Manrope-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Manrope-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Manrope-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Manrope-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Manrope-ExtraLight.ttf
+          weight: 200
+    - family: AirbnbCereal
+      fonts:
+        - asset: assets/fonts/AirbnbCerealBlack.ttf
+          weight: 900
+        - asset: assets/fonts/AirbnbCerealExtraBold.ttf
+          weight: 700
+        - asset: assets/fonts/AirbnbCerealMedium.ttf
+          weight: 600
+        - asset: assets/fonts/AirbnbCerealBold.ttf
+          weight: 500
+        - asset: assets/fonts/AirbnbCerealBook.ttf
+          weight: 400
+        - asset: assets/fonts/AirbnbCerealLight.ttf
+          weight: 300
