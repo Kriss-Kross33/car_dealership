@@ -1,5 +1,4 @@
 import 'package:car_dealership/features/features.dart';
-import 'package:car_dealership/features/splash/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,6 +16,7 @@ class AppRouter {
           );
         },
       ),
+      //* Walkthrough
       GoRoute(
         path: RouteConsts.walkthroughRoute,
         pageBuilder: (context, state) {
@@ -24,7 +24,16 @@ class AppRouter {
             child: WalkthroughScreen(),
           );
         },
-      )
+      ),
+      //* Home
+      GoRoute(
+        path: RouteConsts.homeRoute,
+        pageBuilder: (context, state) {
+          return const MaterialPage(
+            child: HomeScreen(),
+          );
+        },
+      ),
     ],
   );
 }
