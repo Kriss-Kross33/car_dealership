@@ -48,6 +48,7 @@ class AuthenticationRepository {
   ///
   /// Throw `LoginWithEmailAndPasswordError` when an
   /// error occurs
+
   Future<void> loginWithEmailAndPassword({
     required String email,
     required String password,
