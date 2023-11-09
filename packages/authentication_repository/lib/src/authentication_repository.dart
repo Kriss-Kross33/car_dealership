@@ -2,6 +2,7 @@ import 'package:authentication_repository/src/errors/login_with_email_and_passwo
 import 'package:authentication_repository/src/errors/login_with_google_error.dart';
 import 'package:authentication_repository/src/errors/logout_error.dart';
 import 'package:authentication_repository/src/errors/signup_with_email_and_password_error.dart';
+import 'package:authentication_repository/src/models/models.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -20,6 +21,33 @@ class AuthenticationRepository {
   firebase_auth.User? get currentUser =>
       firebase_auth.FirebaseAuth.instance.currentUser;
 
+  Stream<User> get user {
+    return _firebaseAuth!.authStateChanges().map((firebaseUser) {
+      final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
+      return user;
+    });
+  }
+
+  /// Signs a user in anonymously
+  Future<void> signInAnonymously() async {
+    try {
+      await _firebaseAuth!.signInAnonymously();
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case 'operation-not-allowed':
+
+          /// Anonymous sign in has not been enabled for this project
+          break;
+        default:
+          print('Unknown Error');
+      }
+    }
+  }
+
+  /// Login user with provided `email` and `password`.
+  ///
+  /// Throw `LoginWithEmailAndPasswordError` when an
+  /// error occurs
   Future<void> loginWithEmailAndPassword({
     required String email,
     required String password,
@@ -38,6 +66,10 @@ class AuthenticationRepository {
     }
   }
 
+  /// Login user with using google authentication
+  ///
+  /// Throw `LoginWithGoogleError` when an
+  /// error occurs
   Future<void> loginWithGoogle() async {
     try {
       late firebase_auth.AuthCredential credential;
@@ -47,7 +79,7 @@ class AuthenticationRepository {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      await convertUserWithGmail(credential: credential);
+      await convertUserWithGoogleAuth(credential: credential);
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw LoginWithGoogleError(errorMessage: e.message ?? 'Unknown Error');
     } catch (e) {
@@ -70,6 +102,11 @@ class AuthenticationRepository {
     }
   }
 
+  /// Converts an anonymous user to an authenticated user
+  ///
+  /// The user signs up using `email` and `password` and the
+  /// data from the anonymous session is copied over to the
+  /// newly created user.
   Future<void> convertUserWithEmail(
       {required String email, required String password}) async {
     try {
@@ -103,9 +140,14 @@ class AuthenticationRepository {
     }
   }
 
-  Future<void> convertUserWithGmail(
-      {required firebase_auth.AuthCredential credential}) async {
-    try {} on firebase_auth.FirebaseAuthException catch (e) {
+  /// Link an annonymous account with a newly created
+  /// account using google auth
+  Future<void> convertUserWithGoogleAuth({
+    required firebase_auth.AuthCredential credential,
+  }) async {
+    try {
+      await _firebaseAuth?.currentUser?.linkWithCredential(credential);
+    } on firebase_auth.FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'provider-already-linked':
           break;
@@ -139,4 +181,12 @@ class AuthenticationRepository {
       throw LogoutError(errorMessage: e.toString());
     }
   }
+}
+
+extension on firebase_auth.User {
+  User get toUser => User(
+        id: uid,
+        email: email,
+        isAnonymous: isAnonymous,
+      );
 }
