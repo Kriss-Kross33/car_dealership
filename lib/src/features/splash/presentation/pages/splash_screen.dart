@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:car_dealership/core/core.dart';
+import 'package:car_dealership/src/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,9 +20,15 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> handleWaitingLogic() async {
-    Timer(const Duration(seconds: 3), () {
+    _timer = Timer(const Duration(seconds: 3), () {
       context.pushReplacement(RouteConsts.walkthroughRoute);
     });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override

@@ -1,5 +1,5 @@
-import 'package:car_dealership/core/core.dart';
-import 'package:car_dealership/features/walkthrough/walkthrough.dart';
+import 'package:car_dealership/src/core/core.dart';
+import 'package:car_dealership/src/features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

@@ -1,4 +1,4 @@
-import 'package:car_dealership/core/core.dart';
+import 'package:car_dealership/src/core/core.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {

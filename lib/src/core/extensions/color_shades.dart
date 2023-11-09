@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension on Color {
+extension ColorBrighten on Color {
   Color brighten([int percent = 10]) {
     assert(
       1 <= percent && percent <= 100,

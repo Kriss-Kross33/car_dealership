@@ -1,5 +1,6 @@
-import 'package:car_dealership/core/core.dart';
 import 'package:flutter/material.dart';
+
+import 'src/core/core.dart';
 
 void main() {
   runApp(const MainApp());

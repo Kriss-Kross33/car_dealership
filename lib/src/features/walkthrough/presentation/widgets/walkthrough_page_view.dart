@@ -1,6 +1,6 @@
 import 'package:another_transformer_page_view/another_transformer_page_view.dart';
-import 'package:car_dealership/core/core.dart';
-import 'package:car_dealership/features/features.dart';
+import 'package:car_dealership/src/core/core.dart';
+import 'package:car_dealership/src/features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
