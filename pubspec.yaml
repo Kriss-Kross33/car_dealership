@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   another_transformer_page_view: ^2.0.1
+  authentication_repository:
+    path: packages/authentication_repository
   flutter:
     sdk: flutter
   car_repository:
