@@ -50,6 +50,7 @@ class DefaultFirebaseOptions {
     projectId: 'kap-car-dealership',
     authDomain: 'kap-car-dealership.firebaseapp.com',
     storageBucket: 'kap-car-dealership.appspot.com',
+    measurementId: 'G-ZY0ZY480L2',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -66,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '438231719501',
     projectId: 'kap-car-dealership',
     storageBucket: 'kap-car-dealership.appspot.com',
+    iosClientId: '438231719501-av4jnpkdno3mtdhrut4q48fo5p4l2vrq.apps.googleusercontent.com',
     iosBundleId: 'com.example.carDealership',
   );
 
@@ -75,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '438231719501',
     projectId: 'kap-car-dealership',
     storageBucket: 'kap-car-dealership.appspot.com',
+    iosClientId: '438231719501-iievg9melt7tkg5jrf8rclg5pi56kd3i.apps.googleusercontent.com',
     iosBundleId: 'com.example.carDealership.RunnerTests',
   );
 }

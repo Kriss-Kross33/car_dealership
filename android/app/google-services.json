@@ -12,7 +12,12 @@
           "package_name": "com.example.car_dealership"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "438231719501-pg7f91q7asdvi4pse8pho6g1e18eb1em.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC6VVMBjKoIMbxqQ3j-ur-2AQoI_p7Kc78"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438231719501-pg7f91q7asdvi4pse8pho6g1e18eb1em.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "438231719501-av4jnpkdno3mtdhrut4q48fo5p4l2vrq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.carDealership"
+              }
+            }
+          ]
         }
       }
     }
