@@ -60,7 +60,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on LoginWithEmailAndPasswordError catch (e) {
       emit(
         state.copyWith(
-          errorMessage: e.toString(),
+          errorMessage: e.errorMessage,
           status: FormzSubmissionStatus.failure,
         ),
       );
