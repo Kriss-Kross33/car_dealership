@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: car_api,errors
+dependency_overrides:
+  car_api:
+    path: ../car_api
+  errors:
+    path: ../errors

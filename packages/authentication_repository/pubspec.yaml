@@ -3,7 +3,8 @@ description: A dart package that handles User authentication
 publish_to: 'none'
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
+  flutter: '>=3.13.9'
 
 dependencies:
   errors:
@@ -11,6 +12,8 @@ dependencies:
   equatable: ^2.0.5
   firebase_auth: ^4.6.1
   firebase_core: ^2.21.0
+  flutter:
+    sdk: flutter
   google_sign_in: ^6.1.5
 
 dev_dependencies:

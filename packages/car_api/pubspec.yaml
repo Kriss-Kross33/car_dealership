@@ -3,7 +3,7 @@ description: The interface and models for an API for providing access to Car
 publish_to: 'none'
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.1.5 <4.0.0'
 
 dependencies:
   errors:

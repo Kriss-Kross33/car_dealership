@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: errors
+dependency_overrides:
+  errors:
+    path: ../errors
