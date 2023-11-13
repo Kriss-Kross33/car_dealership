@@ -99,6 +99,34 @@ void main() {
 
       group('onLoginPressed', () {
         blocTest<LoginCubit, LoginState>(
+          'emits nothing when state is invalid',
+          build: () => loginCubit,
+          seed: () => const LoginState(
+            isValid: false,
+          ),
+          act: (cubit) => cubit.onLoginPressed(),
+          expect: () => <LoginState>[],
+        );
+
+        blocTest<LoginCubit, LoginState>(
+          'calls loginWithEmailAndPassword with the correct email and password',
+          build: () => loginCubit,
+          seed: () => const LoginState(
+            email: email,
+            password: password,
+            isValid: true,
+          ),
+          act: (cubit) => cubit.onLoginPressed(),
+          verify: (cubit) {
+            verify(
+              () => authenticationRepository.loginWithEmailAndPassword(
+                email: emailString,
+                password: passwordString,
+              ),
+            );
+          },
+        );
+        blocTest<LoginCubit, LoginState>(
           'emits [loading, success] when login is successful',
           build: () => loginCubit,
           seed: () => const LoginState(
