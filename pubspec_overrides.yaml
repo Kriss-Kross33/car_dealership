@@ -1,0 +1,12 @@
+# melos_managed_dependency_overrides: authentication_repository,car_api,car_repository,errors,formz_input
+dependency_overrides:
+  authentication_repository:
+    path: packages/authentication_repository
+  car_api:
+    path: packages/car_api
+  car_repository:
+    path: packages/car_repository
+  errors:
+    path: packages/errors
+  formz_input:
+    path: packages/formz_input
