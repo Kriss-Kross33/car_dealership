@@ -32,6 +32,7 @@ class CarModel extends Equatable {
     required this.seats,
     required this.isRegistered,
     required this.driveTrain,
+    required this.images,
   });
 
   final int id;
@@ -56,6 +57,7 @@ class CarModel extends Equatable {
   final int seats;
   final bool isRegistered;
   final DriveTrain driveTrain;
+  final List<String> images;
 
   factory CarModel.fromJson(Map<String, dynamic> json) =>
       _$CarModelFromJson(json);
@@ -85,6 +87,7 @@ class CarModel extends Equatable {
     int? seats,
     bool? isRegistered,
     DriveTrain? driveTrain,
+    List<String>? images,
   }) {
     return CarModel(
       id: id ?? this.id,
@@ -107,6 +110,7 @@ class CarModel extends Equatable {
       seats: seats ?? this.seats,
       isRegistered: isRegistered ?? this.isRegistered,
       driveTrain: driveTrain ?? this.driveTrain,
+      images: images ?? this.images,
     );
   }
 
@@ -133,6 +137,7 @@ class CarModel extends Equatable {
         seats,
         isRegistered,
         driveTrain,
+        images,
       ];
 }
 

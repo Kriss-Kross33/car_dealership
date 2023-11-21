@@ -31,6 +31,8 @@ CarModel _$CarModelFromJson(Map<String, dynamic> json) => CarModel(
       seats: json['seats'] as int,
       isRegistered: json['isRegistered'] as bool,
       driveTrain: $enumDecode(_$DriveTrainEnumMap, json['driveTrain']),
+      images:
+          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$CarModelToJson(CarModel instance) => <String, dynamic>{
@@ -56,6 +58,7 @@ Map<String, dynamic> _$CarModelToJson(CarModel instance) => <String, dynamic>{
       'seats': instance.seats,
       'isRegistered': instance.isRegistered,
       'driveTrain': _$DriveTrainEnumMap[instance.driveTrain]!,
+      'images': instance.images,
     };
 
 const _$AvailabilityEnumMap = {
