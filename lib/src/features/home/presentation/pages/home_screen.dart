@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Container(),
     Container(),
     Container(),
+    Container(),
   ];
 
   @override
@@ -45,6 +46,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   activeIcon: Image.asset(
                     AssetConsts.home,
+                    height: 25,
+                    width: 25,
+                    color: ColorConsts.primaryColor,
+                  ),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Image.asset(
+                    AssetConsts.sellCar,
+                    height: 25,
+                    width: 25,
+                  ),
+                  activeIcon: Image.asset(
+                    AssetConsts.sellCar,
                     height: 25,
                     width: 25,
                     color: ColorConsts.primaryColor,

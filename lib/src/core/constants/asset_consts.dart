@@ -7,6 +7,7 @@ class AssetConsts {
   static const String fav = 'assets/images/fav.png';
   static const String star = 'assets/images/star.png';
   static const String car = 'assets/images/car.png';
+  static const String sellCar = 'assets/images/sell_car.png';
 
   static const String location = 'assets/images/location.png';
   static const String gasoline = 'assets/images/gasoline.png';
