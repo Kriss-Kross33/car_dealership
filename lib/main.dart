@@ -6,6 +6,9 @@ import 'package:car_repository/car_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'src/core/core.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +20,8 @@ Future<void> main() async {
     name: 'kap-car-dealership',
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Bloc.observer = SimpleBlocObserver();
 
   AuthenticationRepository authenticationRepository =
       AuthenticationRepository();
