@@ -159,6 +159,13 @@ packages:
       relative: true
     source: path
     version: "0.0.0"
+  car_remote_api:
+    dependency: "direct main"
+    description:
+      path: "packages/car_remote_api"
+      relative: true
+    source: path
+    version: "0.0.0"
   car_repository:
     dependency: "direct main"
     description:

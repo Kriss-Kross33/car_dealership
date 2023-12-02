@@ -13,6 +13,8 @@ dependencies:
     path: packages/authentication_repository
   flutter:
     sdk: flutter
+  car_remote_api:
+    path: packages/car_remote_api
   car_repository:
     path: packages/car_repository
   cloud_firestore: ^4.12.2
@@ -50,6 +52,7 @@ flutter:
     - assets/icons/
     - assets/icons/2.0x/
     - assets/icons/3.0x/
+    - assets/logos/
     - assets/fonts/
 
   fonts:
