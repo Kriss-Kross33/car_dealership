@@ -1,5 +1,6 @@
 import 'package:car_dealership/src/core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// {@template custom_text_field}
 /// A custom text field
@@ -20,6 +21,13 @@ class CustomTextField extends StatelessWidget {
     this.prefixIconConstraints,
     this.suffixIconConstraints,
     this.hintText,
+    this.labelText,
+    this.showTextFieldInputBorder = false,
+    this.lableStyle,
+    this.isValid,
+    this.inputFormatters,
+    this.maxLength,
+    this.maxLines,
   });
 
   /// Key used to identify the text field.
@@ -28,7 +36,10 @@ class CustomTextField extends StatelessWidget {
   /// Error text to be displayed on failed validation.
   final String? errorText;
 
-  /// Error text to be displayed on failed validation.
+  /// Label of the text field
+  final String? labelText;
+
+  /// Hint text to show what kind of input the text field accepts
   final String? hintText;
 
   /// The type of keyboard the text field requires
@@ -58,55 +69,102 @@ class CustomTextField extends StatelessWidget {
   /// Callback which listens for change in text input.
   final ValueChanged<String>? onChanged;
 
+  final bool showTextFieldInputBorder;
+
+  /// The style to use for lable
+  final TextStyle? lableStyle;
+
+  ///
+  final bool? isValid;
+
+  final List<TextInputFormatter>? inputFormatters;
+
+  final int? maxLength;
+
+  final int? maxLines;
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: ignoring,
-      child: TextField(
-        key: textFieldkey,
-        readOnly: readOnly,
-        textAlign: TextAlign.left,
-        obscureText: obscureText,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontSize: 14,
-            ),
-        keyboardType: keyboardType,
-        decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: ColorConsts.black,
+      child: !showTextFieldInputBorder
+          ? Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: isValid == null ? Colors.grey.shade500 : Colors.red,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
-          prefixIcon: prefixIcon,
-          isDense: true,
-          prefixIconConstraints: prefixIconConstraints,
-          suffixIcon: suffixIcon,
-          suffixIconConstraints: suffixIconConstraints,
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 16,
-            horizontal: 10,
-          ),
-          errorText: errorText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color(0xFFACADAD),
+              child: TextFormField(
+                key: textFieldkey,
+                maxLines: maxLines,
+                onChanged: onChanged,
+                keyboardType: keyboardType,
+                inputFormatters: inputFormatters,
+                maxLength: maxLength,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: ColorConsts.primaryColor,
+                    ),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  labelText: labelText,
+                  labelStyle: lableStyle ??
+                      Theme.of(context)
+                          .textTheme
+                          .bodyLarge
+                          ?.copyWith(color: Colors.grey.shade600),
+                  errorText: errorText,
+                ),
+              ),
+            )
+          : TextField(
+              key: textFieldkey,
+              readOnly: readOnly,
+              textAlign: TextAlign.left,
+              obscureText: obscureText,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: 14,
+                  ),
+              keyboardType: keyboardType,
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: ColorConsts.black,
+                    ),
+                prefixIcon: prefixIcon,
+                isDense: true,
+                prefixIconConstraints: prefixIconConstraints,
+                suffixIcon: suffixIcon,
+                suffixIconConstraints: suffixIconConstraints,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 10,
+                ),
+                labelText: labelText,
+                labelStyle: lableStyle,
+                errorText: errorText,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(
+                    color: Color(0xFFACADAD),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(
+                    color: Color(0xFFACADAD),
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(
+                    color: Color(0xFFACADAD),
+                  ),
+                ),
+              ),
+              onChanged: onChanged,
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color(0xFFACADAD),
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
-            borderSide: const BorderSide(
-              color: Color(0xFFACADAD),
-            ),
-          ),
-        ),
-        onChanged: onChanged,
-      ),
     );
   }
 }
