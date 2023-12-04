@@ -7,10 +7,10 @@ class Year extends FormzInput<String, YearValidationError> {
   const Year.dirty([super.dirty = '']) : super.dirty();
 
   YearValidationError? validator(String? value) {
-    if (value != null) {
+    if (value != null && value.isNotEmpty) {
       final currentYear = DateTime.now().year;
       final yearInt = int.parse(value);
-      if (1930 >= yearInt && yearInt <= currentYear) {
+      if (yearInt <= currentYear && yearInt >= 1930) {
         return null;
       }
       return YearValidationError.invalid;
