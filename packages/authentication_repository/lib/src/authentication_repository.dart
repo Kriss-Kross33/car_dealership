@@ -1,8 +1,4 @@
-import 'package:authentication_repository/src/errors/login_with_email_and_password_error.dart';
-import 'package:authentication_repository/src/errors/login_with_google_error.dart';
-import 'package:authentication_repository/src/errors/logout_error.dart';
-import 'package:authentication_repository/src/errors/signup_with_email_and_password_error.dart';
-import 'package:authentication_repository/src/models/models.dart';
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 
