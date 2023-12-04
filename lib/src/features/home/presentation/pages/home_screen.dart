@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final screens = <Widget>[
     const DashboardScreen(),
-    Container(),
+    const SellCarScreen(),
     Container(),
     Container(),
     Container(),
@@ -26,93 +26,99 @@ class _HomeScreenState extends State<HomeScreen> {
       create: (context) => NavBarCubit(),
       child: BlocBuilder<NavBarCubit, NavBarState>(
         builder: (context, state) {
-          return Scaffold(
-            bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: ColorConsts.primaryColor,
-              onTap: (index) =>
-                  context.read<NavBarCubit>().onTabSelected(index),
-              type: BottomNavigationBarType.fixed,
-              currentIndex: state.index,
-              selectedLabelStyle: const TextStyle(
-                color: ColorConsts.primaryColor,
-                fontWeight: FontWeight.w500,
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Scaffold(
+              bottomNavigationBar: BottomNavigationBar(
+                selectedItemColor: ColorConsts.primaryColor,
+                onTap: (index) =>
+                    context.read<NavBarCubit>().onTabSelected(index),
+                type: BottomNavigationBarType.fixed,
+                currentIndex: state.index,
+                selectedLabelStyle: const TextStyle(
+                  color: ColorConsts.primaryColor,
+                  fontWeight: FontWeight.w500,
+                ),
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      AssetConsts.home,
+                      height: 25,
+                      width: 25,
+                    ),
+                    activeIcon: Image.asset(
+                      AssetConsts.home,
+                      height: 25,
+                      width: 25,
+                      color: ColorConsts.primaryColor,
+                    ),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      AssetConsts.sellCar2,
+                      height: 22,
+                      width: 22,
+                    ),
+                    activeIcon: Image.asset(
+                      AssetConsts.sellCar2,
+                      height: 25,
+                      width: 25,
+                      color: ColorConsts.primaryColor,
+                    ),
+                    label: 'Sell',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      AssetConsts.fav,
+                      height: 25,
+                      width: 25,
+                    ),
+                    activeIcon: Image.asset(
+                      AssetConsts.fav,
+                      height: 25,
+                      width: 25,
+                      color: ColorConsts.primaryColor,
+                    ),
+                    label: 'Favourites',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      AssetConsts.message,
+                      height: 25,
+                      width: 25,
+                    ),
+                    activeIcon: Image.asset(
+                      AssetConsts.message,
+                      height: 25,
+                      width: 25,
+                      color: ColorConsts.primaryColor,
+                    ),
+                    label: 'Messages',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Image.asset(
+                      AssetConsts.profile,
+                      height: 25,
+                      width: 25,
+                    ),
+                    activeIcon: Image.asset(
+                      AssetConsts.profile,
+                      height: 25,
+                      width: 25,
+                      color: ColorConsts.primaryColor,
+                    ),
+                    label: 'Profile',
+                  ),
+                ],
               ),
-              items: [
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    AssetConsts.home,
-                    height: 25,
-                    width: 25,
-                  ),
-                  activeIcon: Image.asset(
-                    AssetConsts.home,
-                    height: 25,
-                    width: 25,
-                    color: ColorConsts.primaryColor,
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    AssetConsts.sellCar,
-                    height: 25,
-                    width: 25,
-                  ),
-                  activeIcon: Image.asset(
-                    AssetConsts.sellCar,
-                    height: 25,
-                    width: 25,
-                    color: ColorConsts.primaryColor,
-                  ),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    AssetConsts.fav,
-                    height: 25,
-                    width: 25,
-                  ),
-                  activeIcon: Image.asset(
-                    AssetConsts.fav,
-                    height: 25,
-                    width: 25,
-                    color: ColorConsts.primaryColor,
-                  ),
-                  label: 'Favourites',
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    AssetConsts.message,
-                    height: 25,
-                    width: 25,
-                  ),
-                  activeIcon: Image.asset(
-                    AssetConsts.message,
-                    height: 25,
-                    width: 25,
-                    color: ColorConsts.primaryColor,
-                  ),
-                  label: 'Messages',
-                ),
-                BottomNavigationBarItem(
-                  icon: Image.asset(
-                    AssetConsts.profile,
-                    height: 25,
-                    width: 25,
-                  ),
-                  activeIcon: Image.asset(
-                    AssetConsts.profile,
-                    height: 25,
-                    width: 25,
-                    color: ColorConsts.primaryColor,
-                  ),
-                  label: 'Profile',
-                ),
-              ],
-            ),
-            body: IndexedStack(
-              index: state.index,
-              children: screens,
+              resizeToAvoidBottomInset: true,
+              body: IndexedStack(
+                index: state.index,
+                children: screens,
+              ),
             ),
           );
         },
