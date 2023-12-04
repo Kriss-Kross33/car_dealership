@@ -188,9 +188,9 @@ class _CarRecommentationSectionState extends State<_CarRecommentationSection> {
                                 Row(
                                   children: [
                                     Image.asset(
-                                      AssetConsts.carRepair,
-                                      height: 24,
-                                      width: 24,
+                                      AssetConsts.carRepair4,
+                                      height: 28,
+                                      width: 28,
                                       color: ColorConsts.primaryColor,
                                     ),
                                     const SizedBox(
