@@ -1,0 +1,16 @@
+name: car_remote_api
+description: A Flutter implementation of the CarApi that uses cloud firestore.
+publish_to: 'none'
+
+
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  car_api:
+    path: ../car_api
+  cloud_firestore: ^4.12.2
+  equatable: ^2.0.5
+  firebase_core: ^2.21.0
+  fpdart: ^1.1.0
