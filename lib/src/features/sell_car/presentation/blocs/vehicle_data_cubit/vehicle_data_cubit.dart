@@ -13,4 +13,11 @@ class VehicleDataCubit extends Cubit<VehicleDataState> {
       ),
     );
   }
+
+  void nextPage() {
+    if (state.currentPage >= 0 && state.currentPage != 3) {
+      final nextPage = state.currentPage + 1;
+      emit(state.copyWith(currentPage: nextPage));
+    }
+  }
 }

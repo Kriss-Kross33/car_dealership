@@ -1,7 +1,9 @@
 part of '../pages/sell_car_screen.dart';
 
 class _VehicleInfoSecondPage extends StatelessWidget {
-  const _VehicleInfoSecondPage();
+  const _VehicleInfoSecondPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,28 +15,25 @@ class _VehicleInfoSecondPage extends StatelessWidget {
           addAutomaticKeepAlives: true,
           shrinkWrap: true,
           children: [
-            SizedBox(
-              width: constraints.maxWidth,
-              height: 380,
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 20,
-                    crossAxisSpacing: 20,
-                  ),
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: Colors.red,
-                      ),
-                    );
-                  },
+            MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 20,
                 ),
+                itemCount: 9,
+                itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: Colors.red,
+                    ),
+                  );
+                },
               ),
             ),
             const Gap(15),
@@ -100,6 +99,29 @@ class _VehicleInfoSecondPage extends StatelessWidget {
                       state.model.displayError != null ? 'invalid trim' : null,
                   onChanged: (trimString) =>
                       context.read<SellCarCubit>().onTrimInput(trimString),
+                );
+              },
+            ),
+            const Gap(30),
+            BlocBuilder<VehicleDataCubit, VehicleDataState>(
+              builder: (context, state) {
+                return BlocBuilder<SellCarCubit, SellCarState>(
+                  builder: (context, sellState) {
+                    return SizedBox(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorConsts.primaryColor,
+                        ),
+                        onPressed: () {
+                          if (sellState.isValid) {
+                            context.read<VehicleDataCubit>().nextPage();
+                          }
+                        },
+                        child: const Text('Submit'),
+                      ),
+                    );
+                  },
                 );
               },
             ),

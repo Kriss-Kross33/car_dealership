@@ -15,6 +15,7 @@ part '../widgets/drive_train_widget.dart';
 part '../widgets/fuel_widget.dart';
 part '../widgets/registered_widget.dart';
 part '../widgets/transmission_widget.dart';
+part '../widgets/vehicle_data_page_view.dart';
 part '../widgets/vehicle_info_first_page.dart';
 part '../widgets/vehicle_info_second_page.dart';
 part '../widgets/vehicle_info_third_page.dart';
@@ -25,16 +26,6 @@ class SellCarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [
-      const _VehicleInfoFirstPage(
-        key: Key('_vehicle_info_first_page'),
-      ),
-      const _VehicleInfoSecondPage(
-        key: Key('_vehicle_info_second_page'),
-      ),
-      const _VehicleInfoThirdPage(),
-    ];
-
     return _CarDataProvidersWidget(
       key: const Key('_car_data_providers_widget'),
       child: LayoutBuilder(builder: (context, constraints) {
@@ -119,15 +110,9 @@ class SellCarScreen extends StatelessWidget {
                     ),
               ),
               const Gap(30),
-              Flexible(
-                child: PageView.builder(
-                  itemCount: pages.length,
-                  itemBuilder: (context, index) {
-                    return pages[index];
-                  },
-                  onPageChanged: (int pageIndex) {
-                    context.read<VehicleDataCubit>().onPageChanged(pageIndex);
-                  },
+              const Flexible(
+                child: _VehicleDataPageView(
+                  key: Key('__vehicle_data_page_view'),
                 ),
               ),
             ],

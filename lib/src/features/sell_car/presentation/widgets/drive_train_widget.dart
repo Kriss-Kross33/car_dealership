@@ -27,32 +27,38 @@ class _DriveTrainWidgetState extends State<_DriveTrainWidget> {
           final driveTrain = DriveTrain.values[index];
           return Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: ChoiceChip(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              selected: selectedIndex == index,
-              selectedColor: selectedIndex == index
-                  ? ColorConsts.primaryColor
-                  : Colors.grey,
-              label: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                height: 25,
-                alignment: Alignment.center,
-                child: Text(
-                  driveTrain.name.splitCamelCasing(),
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: selectedIndex == index
-                            ? Colors.white
-                            : Colors.black,
-                      ),
-                ),
-              ),
-              onSelected: (selected) {
-                setState(() {
-                  selectedIndex = selected ? index : -1;
-                });
-                context.read<SellCarCubit>().onConditionInput(driveTrain.name);
+            child: BlocBuilder<DriveTrainCubit, DriveTrainState>(
+              builder: (context, state) {
+                return ChoiceChip(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  selected: state.selectedIndex == index,
+                  selectedColor: state.selectedIndex == index
+                      ? ColorConsts.primaryColor
+                      : Colors.grey,
+                  label: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    height: 25,
+                    alignment: Alignment.center,
+                    child: Text(
+                      driveTrain.name.splitCamelCasing(),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: state.selectedIndex == index
+                                ? Colors.white
+                                : Colors.black,
+                          ),
+                    ),
+                  ),
+                  onSelected: (selected) {
+                    setState(() {
+                      selectedIndex = selected ? index : -1;
+                    });
+                    context
+                        .read<SellCarCubit>()
+                        .onConditionInput(driveTrain.name);
+                  },
+                );
               },
             ),
           );
