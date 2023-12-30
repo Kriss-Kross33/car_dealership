@@ -1,8 +1,9 @@
 name: car_dealership
 packages:
 - '.'
-- features/**
-- packages/**
+- packages/*
+- features/*
+- '**'
 - '*'
 
 scripts:

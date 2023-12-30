@@ -217,7 +217,7 @@ class _VehicleInfoFirstPage extends StatelessWidget {
               ),
               const Gap(15),
               const Gap(20),
-              BlocBuilder<SellCarCubit, SellCarState>(
+              BlocBuilder<VehicleDataCubit, VehicleDataState>(
                 builder: (context, state) {
                   return SizedBox(
                     height: 50,
@@ -226,7 +226,7 @@ class _VehicleInfoFirstPage extends StatelessWidget {
                         backgroundColor: ColorConsts.primaryColor,
                       ),
                       onPressed: () =>
-                          context.read<SellCarCubit>().onSubmitButtonPressed(),
+                          context.read<VehicleDataCubit>().nextPage(),
                       child: const Text('Submit'),
                     ),
                   );
